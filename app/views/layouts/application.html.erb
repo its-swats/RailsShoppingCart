@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+<!-- This caused the javascript to be called twice during ajax calls -->
+    <%#= javascript_include_tag "application" %>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+  <div id='hi_res_bar'>
+    <%= render 'layouts/navbar' %>
+  </div>
+  <div id='low_res_bar'>
+    <%= render 'layouts/small_navbar' %>
+  </div>
+  <div class='row'>
+    <div class='small-0 medium-1 large-2 columns show' >
+    </div>
+    <div class='small-12 medium-10 large-8 columns' >
+
+      <h1>Merriweather's Merry Whethers</h1>
+
+      <%= yield %>
+
+    </div>
+    <div class='small-0 medium-1 large-2 columns show' >
+
+    </div>
+
+
+  </body>
+</html>

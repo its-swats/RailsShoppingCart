@@ -1,0 +1,35 @@
+<h5>Your Cart</h5>
+<table role='grid'>
+  <tr>
+    <th class='small-4 large-4'>Item</th>
+    <td class='small-1 large-1'>Quantity</th>
+    <th class='small-1 large-1'>Price</th>
+    <th class='small-2 large-2'></th>
+  </tr>
+
+  <% @line_item.each_with_index do |item, index| %>
+<% p "*" * 90 %>
+  <% p item %>
+  <% index %>
+  <% p "*" * 90 %>
+    <tr>
+      <td><%= link_to item[1].first.product.title, product_path(item[1].first.product_id) %></td>
+      <td><%= item[1].count %></td>
+      <td><%= number_to_currency(item[1].first.product.price) %></td>
+      <td><%= link_to 'Remove from Cart', line_item_path(item[1].first), method: :delete%></td>
+    </tr>
+  <% end %>
+  <tr>
+    <td></td>
+    <td class='right'>Total:</td>
+    <td><%= number_to_currency(@cart.total_cost) %></td>
+    <td></td>
+  </tr>
+</table>
+
+<%= link_to 'Check Out', cart_path(current_user.cart), method: :delete, class: 'button tiny radius' %>
+<%= link_to 'Empty Cart', cart_path(current_user.cart), method: :delete, class: 'button tiny radius' %>
+
+
+
+

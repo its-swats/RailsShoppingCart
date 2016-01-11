@@ -1,0 +1,26 @@
+<nav class="top-bar sticky small-12 medium-12 large-12" data-topbar role="navigation">
+  <section class="top-bar-section">
+   <div class='top_banner'>
+    <ul class='inline-list left top_banner'>
+      <li><%= link_to 'Home', root_path %></li>
+      <%if current_user  %>
+        <li><%= link_to "Cart: (#{current_user.items_in_cart})", carts_path, class: 'cart_count' %></li>
+      <%end %>
+    </ul>
+    <ul class="inline-list right top_banner">
+      <% if current_user && current_user.admin? %>
+        <li><%= link_to 'List', admin_products_path %></li>
+        <li><%= link_to 'Users', users_path  %></li>
+        <li><%= link_to 'Profile', user_path(current_user) %></li>
+        <li><%= link_to 'Logout', sessions_path, method: :delete %></li>
+      <% elsif current_user %>
+        <li><%= link_to 'Profile', user_path(current_user) %></li>
+        <li><%= link_to 'Logout', sessions_path, method: :delete %></li>
+      <% else %>
+      <li><%= link_to 'Register', new_user_path%></li>
+      <li><%= link_to 'Sign In', new_sessions_path%></li>
+      <% end  %>
+    </ul>
+  </div>
+  </section>
+</nav>

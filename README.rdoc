@@ -1,0 +1,13 @@
+== Rails Online Shopping Cart
+
+Current functionality allows for:
+
+* Admins to create products and add them to the store
+
+* Customers to register an account
+
+* Customers can add and remove line items to/from their cart
+
+* Permissions set for all routes, allowing only admins to access the /admin routes
+
+* Routes follow REST convention

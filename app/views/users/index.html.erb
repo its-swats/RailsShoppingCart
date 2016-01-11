@@ -1,0 +1,18 @@
+<h5>Users</h5>
+<table role='grid'>
+  <tr>
+    <th class='small-6 large-6'>First name</th>
+    <th class='small-6 large-6'>Last name</th>
+  </tr>
+  <% @users.each do |user| %>
+  <tr>
+    <td><%=user.first_name %></td>
+    <td><%=user.last_name %></td>
+    <td><%= link_to 'Show', user %></td>
+    <td><%= link_to 'Edit', edit_user_path(user) %></td>
+    <td><%= link_to 'Delete', user_path(user), method: :delete %></td>
+  </tr>
+  <% end %>
+</table>
+
+

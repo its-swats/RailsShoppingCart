@@ -1,0 +1,27 @@
+<h5>Products</h5>
+<ul  class="small-block-grid-2 medium-block-grid-3 large-block-grid-3">
+  <% @products.each do |product| %>
+    <li class='text-center'>
+      <div class='item_box'>
+        <%= image_tag('default.jpg') %>
+        <ul>
+          <li><%= link_to product.title, product_path(product) %></li>
+          <li><%= number_to_currency(product.price) %></li>
+          <li>qty: <%= product.quantity%></li>
+          <%if current_user %>
+          <a href="#" data-reveal-id="myModal<%=product.id %>">Add to Cart!</a>
+          <div id="myModal<%=product.id%>" class="reveal-modal tiny" data-reveal>
+            <p><%= product.title %></p>
+            <%= form_tag({:controller => 'line_items', :action => 'create'}, :product_id => product.id, :id => product.id, :class => 'storefront_box') %>
+              <p>Enter Quantity: <%=number_field(:line_item, product.id, min: 1, step: 1) %></p>
+              <%=button_to "Add to Cart", class: "submit_order" %>
+            <a class="close-reveal-modal">&#215;</a>
+          </div>
+          <%end %>
+        </ul>
+      </div>
+    </li>
+  <% end %>
+</ul>
+
+

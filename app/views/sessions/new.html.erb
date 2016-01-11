@@ -1,0 +1,16 @@
+<h5>Log In</h5>
+<%= form_for :sessions, url: sessions_path do |f| %>
+  <p>
+    <%=f.label :email %>
+    <%=f.text_field :email %>
+  </p>
+
+  <p>
+    <%=f.label :password %>
+    <%=f.password_field :password %>
+  </p>
+
+  <p>
+     <%= f.submit "Log In", class: 'button tiny radius' %>
+  </p>
+<% end %>
